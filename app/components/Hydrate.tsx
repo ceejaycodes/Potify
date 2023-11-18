@@ -15,7 +15,7 @@ export default function Hydrate({children}: {children: ReactNode}){
     
     return(
       <SessionProvider>  
-    {isHydrated ? <body data-theme={themeStore.mode}>{children}</body> : <body data-theme={themeStore.m}><h1>Loading....</h1></body>}
+    {isHydrated ? <body data-theme={themeStore.mode}>{children}</body> : <body data-theme={themeStore.mode}><h1>Loading....</h1></body>}
     </SessionProvider>
     )
 }
