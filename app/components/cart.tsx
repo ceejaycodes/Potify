@@ -9,6 +9,7 @@ import {motion } from 'framer-motion'
 
 import React from 'react'
 import Checkout from './Checkout';
+import OrderConfirmed from './OrderConfirmed';
 
 
 
@@ -96,13 +97,14 @@ const totalPrice = cartStore.cart.reduce((acc, item) => {
 
         {cartStore.cart.length > 0 && cartStore.onCheckout === 'cart' &&
          
-        <motion.button onClick={() => cartStore.setCheckout("checkout")} layout className='py-2 mt-4 bg-teal-700 w-full rounded-medium text-white'>
+        <motion.button onClick={() => cartStore.setCheckout("checkout")} layout className='btn btn-primary'>
           Checkout</motion.button>
         }
 
 
         {cartStore.onCheckout === "checkout"  && <Checkout/>}
-        {cartStore.cart.length < 1 && (
+        {cartStore.onCheckout === "success" && <OrderConfirmed/>}
+        {cartStore.cart.length < 1 && cartStore.onCheckout === "cart" && (
           <div className='flex flex-col items-center gap-12 text-2xl font-medium pt-56 opacity-75'>
             <h1>Sorry Your Cart is Empty</h1>
 

@@ -56,7 +56,7 @@ export default function CheckoutForm(clientSecret: String){
         <form className="text-gray-600" onSubmit={handleSubmit} id="payment-form">
             <PaymentElement id="payment-element" options={{layout: 'tabs'}}/>
             <h1 className="py-4 text-sm font-bold">Total:{formatedPrice} </h1>
-            <button className={"py-2 mt-4 w-full bg-teal-700 rounded-md disabled:opacity-40"} id="submit" disabled={isLoading || !stripe || !elements }>
+            <button className={"btn btn-primary"} id="submit" disabled={isLoading || !stripe || !elements }>
                 <span id="button-text">
                     {isLoading ? <span>Processing🕺🏼</span> : <span>Pay Now 🤑</span>}
 

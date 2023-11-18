@@ -7,6 +7,7 @@ import Cart from './cart'
 import { useCartStore } from '@/store'
 import { AiFillShopping } from 'react-icons/ai'
 import { motion, AnimatePresence } from 'framer-motion';
+import DarkLight from './DarkLight'
 
 
 
@@ -15,7 +16,7 @@ export default function Nav({ user }: Session){
     return (
         <nav className='flex justify-around mt-7 ml-14 gap-12'>
            <Link href={'/'}> <h1>Potify</h1> </Link>
-            <ul className='flex justify-evenly'>
+            <ul className='flex items-center gap-8'>
                 <li>
                     Products 
                 </li>
@@ -32,6 +33,12 @@ export default function Nav({ user }: Session){
                     )}
                     </AnimatePresence>
                 </li>
+
+                {/* Dak Mode */}
+                <DarkLight/>
+
+                {/* if the user is not logged in */}
+
                 {!user && (
                     <li className='ml-5'>
                         <button onClick ={() =>{signIn()}} >Sign In</button>

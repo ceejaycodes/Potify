@@ -1,9 +1,12 @@
 'use client'
+import { useThemeStore } from '@/store';
+import { SessionProvider } from 'next-auth/react';
 import {ReactNode, useEffect, useState} from 'react';
 
 
 export default function Hydrate({children}: {children: ReactNode}){
     const [isHydrated, setisHydrated] = useState(false)
+    const themeStore = useThemeStore()
 
     useEffect(() => {
       setisHydrated(true)
@@ -11,8 +14,8 @@ export default function Hydrate({children}: {children: ReactNode}){
     }, [])
     
     return(
-        <>
-    {isHydrated ? <>{children}</> : <div><h1>Loading....</h1></div>}
-    </>
+      <SessionProvider>  
+    {isHydrated ? <body data-theme={themeStore.mode}>{children}</body> : <body data-theme={themeStore.m}><h1>Loading....</h1></body>}
+    </SessionProvider>
     )
 }

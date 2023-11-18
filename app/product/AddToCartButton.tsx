@@ -1,7 +1,7 @@
 'use client'
  import { useCartStore } from "@/store";
 
- import React from 'react'
+ import React, { useState } from 'react'
  
  export interface AddCartIn {
     name: string,
@@ -13,9 +13,24 @@
  
  const AddToCart = ({name, id, image, unit_amount, quantity}: AddCartIn) => {
     const cartStore = useCartStore()
+    const [added, setadded] = useState(false)
+
+    const handleAddToCart = () => {
+      cartStore.addProduct({ id, name, unit_amount, quantity, image})
+      setadded(true)
+      setTimeout(() => {
+        setadded(false)
+      }, 500)
+    }
    return (
      <>
-     <button onClick={() => cartStore.addProduct({name, id,  image, unit_amount, quantity})}  className="mt-3 p-2 bg-amber-500 text-white rounded'">Add To Cart</button>
+     <button onClick={handleAddToCart} 
+     disabled={added}
+      className="my-4 btn btn-primary w-full"
+      >
+      {!added && <span>Add To Cart</span>}
+       {added && <span> Adding To Cart 🪴</span>}
+        </button>
      </>
    )
  }
