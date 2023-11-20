@@ -19,7 +19,7 @@ const Product = ({id, name, image,unit_amount,quantity, description}: CartProps)
     <Link href={{ pathname: `/product/${id}`, query: {name, image, id, unit_amount, quantity ,description} }}>
         <div className='block mt-4 ml-8'>
         <Image src={image} alt  ={name} height={800} width={800}
-         className='w-96 h-36 my-6 rounded-3xl object-cover'/>
+         className='w-64 h-36 my-6 rounded-3xl object-cover'/>
         <h3>{name.charAt(0).toUpperCase() + name.slice(1)}</h3>
         <h5 className='text-sm text-primary'>{unit_amount != null ? formatPrice(unit_amount) : 'NA'}</h5>
         </div>
