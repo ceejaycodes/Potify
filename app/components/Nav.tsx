@@ -14,7 +14,7 @@ import DarkLight from './DarkLight'
 export default function Nav({ user }: Session){
     const cartStore = useCartStore()
     return (
-        <nav className='flex items-center justify-evenly mt-7 ml-1 gap-4'>
+        <nav className='flex items-center mt-4 justify-evenly lg:-mt-18 ml-1 gap-4'>
            <Link className='-mt-6' href={'/'}> <h1>Potify</h1> </Link>
             <ul className='flex gap-4'>
                 <li>

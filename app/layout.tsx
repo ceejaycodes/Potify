@@ -26,12 +26,23 @@ export default async function RootLayout({
   // console.log(session)
   return (
     <html lang="en" data-theme="light">
-      <body
-       className= {`${roboto.className}`}>
+      <body 
+       className= {`flex flex-col justify-between ${roboto.className}`}>
         <Hydrate>
         <Nav user={session?.user} expires={session?.expires as string}/>
         {children}
+
+
+
+        <footer className='flex  justify-center bg-slate-600'>
+        <div className=' '> 
+        <p className='text-slate-300 text-sm'>© Copyright 2023. Made By Marvel</p>
+       </div>
+
+        </footer>
         </Hydrate>
+
+
         
         </body>
     </html>
