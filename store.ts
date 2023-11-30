@@ -1,14 +1,14 @@
 import {create} from 'zustand';
 import { persist } from 'zustand/middleware';
-import { AddCartIn } from './app/product/AddToCartButton';
+import { AddCartType } from './app/product/AddToCartButton';
 
 interface CartState {
     isOpen: boolean,
-    cart: AddCartIn[],
+    cart: AddCartType[],
     // clearCart: () => void
-    removeProduct: (item: AddCartIn) => void,
+    removeProduct: (item: AddCartType) => void,
     toggleCart: () => void,
-    addProduct: (item: AddCartIn) => void
+    addProduct: (item: AddCartType) => void
     paymentIntent: string
     onCheckout: string,
     setCheckout: (val:string) => void
@@ -30,7 +30,7 @@ export const useCartStore = create<CartState>()(
                 if(existingItem){
                     const updatedCart = state.cart.map((cartItem) => {
                         if(cartItem.id === item.id){
-                            return {...cartItem, quantity: cartItem.quantity + 1}
+                            return {...cartItem, quantity: cartItem.quantity! + 1}
                         }
                         return cartItem
                     })
@@ -39,14 +39,14 @@ export const useCartStore = create<CartState>()(
                     return { cart: [...state.cart, {...item, quantity: 1}]}
                 }
             }),
-            removeProduct: (item: AddCartIn) => set((state) => {
+            removeProduct: (item: AddCartType) => set((state) => {
                 // Check if item exists and remove quantity -1 
 
                 const existingItem = state.cart.find(cartItem => cartItem.id === item.id)
-                if (existingItem && existingItem.quantity > 1){
+                if (existingItem && existingItem.quantity! > 1){
                     const updatedCart = state.cart.map((cartItem) => {
                         if(cartItem.id == item.id){
-                            return {...cartItem, quantity: cartItem.quantity - 1}
+                            return {...cartItem, quantity: cartItem.quantity! - 1}
                         }
 
                         return cartItem
