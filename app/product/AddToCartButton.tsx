@@ -3,7 +3,7 @@
 
  import React, { useState } from 'react'
  
- export interface AddCartIn {
+ export interface AddCartType {
     name: string,
     id: number,
     image: string,
@@ -11,7 +11,7 @@
     unit_amount: number
  }
  
- const AddToCart = ({name, id, image, unit_amount, quantity}: AddCartIn) => {
+ const AddToCart = ({name, id, image, unit_amount, quantity}: AddCartType) => {
     const cartStore = useCartStore()
     const [added, setadded] = useState(false)
 

@@ -26,7 +26,7 @@ export const useCartStore = create<CartState>()(
             onCheckout: "cart",
             toggleCart: () => set((state) => ({isOpen: !state.isOpen})),
             addProduct: (item) => set((state) => {
-                const existingItem = state.cart.find(cartItem => cartItem.id === item.id)
+                const existingItem = state.cart.find((cartItem) => cartItem.id === item.id)
                 if(existingItem){
                     const updatedCart = state.cart.map((cartItem) => {
                         if(cartItem.id === item.id){
