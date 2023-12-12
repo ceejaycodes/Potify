@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import {  useCartStore } from '@/store';
+import {  useCartStore, useThemeStore } from '@/store';
 import formatPrice from '@/utils/PriceFormat';
 import {IoAddCircle, IoRemoveCircle} from 'react-icons/io5'
 import Lottie from 'lottie-react';
@@ -19,6 +19,7 @@ import OrderConfirmed from './OrderConfirmed';
 const Cart = () => {
   
  const cartStore = useCartStore()
+ const themeStore = useThemeStore();
 
 const totalPrice = cartStore.cart.reduce((acc, item) => {
   return acc + item.unit_amount * item.quantity
@@ -26,7 +27,7 @@ const totalPrice = cartStore.cart.reduce((acc, item) => {
 
 
   return (
-    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} 
+    <motion.div data-theme={themeStore.mode} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} 
     onClick={cartStore.toggleCart} className='fixed w-full h-screen left-0 top-0 bg-black/25'>
 
 

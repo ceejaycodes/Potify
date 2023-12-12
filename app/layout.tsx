@@ -25,7 +25,7 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions)
   // console.log(session)
   return (
-    <html lang="en" data-theme="light">
+    <html lang="en">
       <body 
        className= {`flex flex-col justify-between ${roboto.className}`}>
         <Hydrate>
