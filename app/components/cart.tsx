@@ -53,7 +53,7 @@ const totalPrice = cartStore.cart.reduce((acc, item) => {
            <>
 
         {cartStore.cart.map((item) => (
-          <motion.div layout key={item.id} className='flex py-4 gap-4'>
+          <motion.div layout key={item.name} className='flex py-4 gap-4'>
             <Image className="h-8 w-8" src={item.image} alt={item.name} width={120} height={120}/>
             <div>
               <h2>{item.name}</h2>

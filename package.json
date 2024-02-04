@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
@@ -34,8 +35,8 @@
     "zustand": "4.3.3"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.29",
-    "tailwindcss": "^3.3.3"
+    "autoprefixer": "10.4.15",
+    "postcss": "8.4.29",
+    "tailwindcss": "3.3.3"
   }
 }
