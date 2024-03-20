@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import Stripe from "stripe";
 import { authOptions } from "./auth/[...nextauth]";
-import { AddCartIn } from "@/app/product/AddToCartButton";
+import { AddCartType } from "@/app/product/AddToCartButton";
 import { CartProps } from "@/app/components/Product";
 import { Prisma } from "@prisma/client";
 import { prisma } from '@/utils/prisma'
@@ -12,7 +12,7 @@ import { prisma } from '@/utils/prisma'
 const stripe = new Stripe(process.env.SECRET_KEY as string, {apiVersion: '2022-11-15'});
 
 
-const calculateOrderAmount = (items: AddCartIn[]) => {
+const calculateOrderAmount = (items: AddCartType[]) => {
     const totalPrice = items?.reduce((acc, item) => {
         return acc + item.unit_amount! * item.quantity!
     }, 0)

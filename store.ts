@@ -25,11 +25,11 @@ export const useCartStore = create<CartState>()(
             paymentIntent: "",
             onCheckout: "cart",
             toggleCart: () => set((state) => ({isOpen: !state.isOpen})),
-            addProduct: (item) => set((state) => {
-                const existingItem = state.cart.find((cartItem) => cartItem.name === item.name)
+            addProduct: (item: AddCartType) => set((state) => {
+                var existingItem = state.cart.find((cartItem) => cartItem.name == item.name)
                 if(existingItem){
                     const updatedCart = state.cart.map((cartItem) => {
-                        if(cartItem.name === item.name){
+                        if(cartItem.name == item.name){
                             return {...cartItem, quantity: cartItem.quantity! + 1}
                         }
                         return cartItem
@@ -42,7 +42,7 @@ export const useCartStore = create<CartState>()(
             removeProduct: (item: AddCartType) => set((state) => {
                 // Check if item exists and remove quantity -1 
 
-                const existingItem = state.cart.find(cartItem => cartItem.name === item.name)
+                var existingItem = state.cart.find(cartItem => cartItem.name === item.name)
                 if (existingItem && existingItem.quantity! > 1){
                     const updatedCart = state.cart.map((cartItem) => {
                         if(cartItem.name == item.name){
