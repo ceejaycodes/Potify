@@ -25,6 +25,7 @@ export const useCartStore = create<CartState>()(
             paymentIntent: "",
             onCheckout: "cart",
             toggleCart: () => set((state) => ({isOpen: !state.isOpen})),
+
             addProduct: (item: AddCartType) => set((state) => {
                 var existingItem = state.cart.find((cartItem) => cartItem.name == item.name)
                 if(existingItem){
@@ -36,7 +37,7 @@ export const useCartStore = create<CartState>()(
                     })
                     return {cart: updatedCart} 
                 } else {
-                    return { cart: [...state.cart, {...item, quantity: 1}]}
+                   return { cart: [...state.cart, { ...item, quantity: 1 }] }
                 }
             }),
             removeProduct: (item: AddCartType) => set((state) => {
